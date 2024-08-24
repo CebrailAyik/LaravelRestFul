@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Employee extends Model
 {
     use HasFactory;
-    protected $fillable = ['company_id','first_name','last_name', 'email','phone' ]; // Ekleme ve güncelleme için hangi alanların izinli olduğunu belirtir.
+    protected $fillable = ['company_id','first_name','last_name', 'email','phone' ];
 
     public function company()
     {

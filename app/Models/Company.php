@@ -9,7 +9,7 @@ class Company extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name', 'email','logo', 'website']; // Ekleme ve güncelleme için hangi alanların izinli olduğunu belirtir.
+    protected $fillable = ['name', 'email','logo', 'website'];
 
     public function employees()
     {
