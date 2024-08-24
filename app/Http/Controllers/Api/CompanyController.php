@@ -7,6 +7,7 @@ use App\Http\Requests\CreateCompanyRequest;
 use App\Http\Resources\CompanyResource;
 use App\Models\Company;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class CompanyController extends Controller
 {
@@ -59,6 +60,18 @@ class CompanyController extends Controller
             'messages' => 'Şirket başarıyla oluşturuldu',
             'data' => $company,
         ]);
+    }
+
+    public function getLogo($id)
+    {
+        $company = Company::findOrFail($id);
+        $logoPath = 'storage/logos/' . $company->logo;
+
+        if (!$company->logo || !Storage::disk('public')->exists('logos/' . $company->logo)) {
+            return response()->json(['error' => 'Logo bulunamadı'], 404);
+        }
+
+        return response()->file(public_path($logoPath));
     }
 
     /**

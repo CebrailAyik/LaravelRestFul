@@ -27,10 +27,8 @@ Route::post('register', [AuthController::class, 'register']);
 Route::middleware('auth:api')->get('/userInfo', [AuthController::class, 'userInfo']);
 Route::middleware('auth:api')->post('/logout', [AuthController::class, 'logout']);
 
-/*Route::get('companies', [CompanyController::class, 'index']);
-Route::post('companies', [CompanyController::class, 'store']);*/
-/*Route::get('employees', [EmployeeController::class, 'index']);
-Route::post('employees', [EmployeeController::class, 'store']);*/
+
 Route::apiResource('companies', CompanyController::class);
 Route::apiResource('employees', EmployeeController::class);
 Route::get('all-companies', [CompanyController::class, 'allCompanies']);
+Route::get('companies/{id}/logo', [CompanyController::class, 'getLogo']);
